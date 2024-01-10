@@ -10,7 +10,7 @@ export const MEMBER_ENTITY_ID_SESSION = 'memberId'
 export const MEMBER_ENTITY_USER_ID_SESSION = 'userId'
 export const BACK_END_HOST = "http://127.0.0.1:8080";
 
-const LoginScreen = (props) => {
+const LoginScreen = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const route = useRoute()
   const state = props.navigation;

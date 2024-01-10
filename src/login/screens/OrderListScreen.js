@@ -8,11 +8,14 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeRouter, Router, Route, Routes, Link } from "react-router-native";
 import {View, StyleSheet, FlatList} from "react-native";
 import {Row, Rows, Table} from "react-native-table-component";
+import OrderEditScreen from "./OrderEditScreen";
 
 // import {Text} from "react-native";
 
 const OrderListScreen = () => {
   const [orderList, setOrderList] = useState([]);
+
+  console.log("OrderListScreen Start!");
   useEffect(()=>{
     const fetchData = async () => {
       await axios.get(BACK_END_HOST + '/orderList')
@@ -92,7 +95,8 @@ const OrderListScreen = () => {
   //   //   </Table>
   //   // </View>
   // )
-  return
+  const idForOrderEdit = 2;
+  return <OrderEditScreen data={idForOrderEdit} />
         // <FlatList data="d" renderItem={table} />
   // <Text>OrderListScreen : ({orderList.map(item => item.name).join(', ')})</Text>
 
