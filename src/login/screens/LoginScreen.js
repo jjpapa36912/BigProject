@@ -2,10 +2,30 @@ import axios from "axios";
 import {resolvePath} from "react-router-native";
 import {Text} from "react-native";
 import {useEffect} from "@types/react";
+import {useState} from "react";
+import {useRoute} from "@react-navigation/native";
 
+
+export const MEMBER_ENTITY_ID_SESSION = 'memberId'
+export const MEMBER_ENTITY_USER_ID_SESSION = 'userId'
 export const BACK_END_HOST = "http://127.0.0.1:8080";
 
-const LoginScreen = () => {
+const LoginScreen = (props) => {
+  const [isLoggedIn, setLoggedIn] = useState(false);
+  const route = useRoute()
+  const state = props.navigation;
+  //
+  // // const data = route.params?.userData
+  console.log("::::"+state);
+  console.log("::::"+state.params);
+
+  // const data = Object.values(testData);
+
+  // console.log(">>>?@@@@@??" +testData["username"]);
+
+
+
+
   const loginId = "djk"
   const password = "1234"
 
@@ -20,6 +40,10 @@ const LoginScreen = () => {
     console.log(response.status)
     if (response.status == 200) {
       console.log("Login Successful");
+      // sessionStorage.setItem(MEMBER_ENTITY_ID_SESSION, response.data.id);
+      // sessionStorage.setItem(MEMBER_ENTITY_USER_ID_SESSION, response.data.userId);
+      setLoggedIn(true);
+
     }
 
   }

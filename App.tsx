@@ -7,7 +7,9 @@
 
 import React from 'react';
 import type {PropsWithChildren} from 'react';
-import { NativeRouter, Router, Route, Routes, Link } from "react-router-native";
+import { Provider } from 'react-native-paper'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 
 import {
   SafeAreaView,
@@ -28,6 +30,9 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import LoginScreen from "./src/login/screens/LoginScreen";
 import MemberRegisterScreen from "./src/login/screens/MemberRegisterScreen";
+import OrderListScreen from "./src/login/screens/OrderListScreen";
+import {theme} from "./src/login/core/theme";
+import OrderDetailScreen from "./src/login/screens/OrderDetailScreen";
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -61,29 +66,56 @@ function Section({children, title}: SectionProps): React.JSX.Element {
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
+  const Stack = createStackNavigator()
+
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      {/*<LoginScreen/>*/}
-      <MemberRegisterScreen/>
-      {/*<Router>*/}
-      {/*  <Routes>*/}
-      {/*    /!*<Switch>*!/*/}
-      {/*    /!*<Route path="/login" element={<LoginForm/>}/>*!/*/}
-      {/*    /!*<Route path="/login" element={<LoginScreen/>}/>*!/*/}
-      {/*    /!*<Route path="/boardList" element={<BoardList />} />*!/*/}
-      {/*    /!*<Route path="/boardRegisterOrderView" element={<BoardRegisterOrderView />} />*!/*/}
-      {/*    /!*<Route path="/boardDetailView/:id" element={<BoardDetailView />} />*!/*/}
-      {/*    /!*<Route path="/boardEditView/:id" element={<BoardEditView />} />*!/*/}
-      {/*    /!*</Switch>*!/*/}
-      {/*  </ Routes>*/}
-      {/*  /!* Add more routes as needed *!/*/}
-      {/*</Router>*/}
 
+      <SafeAreaView style={backgroundStyle}>
+      <Provider theme={theme}>
+        <NavigationContainer>
+
+
+        <Stack.Navigator
+              initialRouteName="OrderListScreen"
+              screenOptions={{
+                headerShown: false,
+              }}
+          >
+            <Stack.Screen name="OrderList" component={OrderListScreen} />
+            <Stack.Screen name="OrderDetail" component={OrderDetailScreen} />
+
+            <Stack.Screen name="LoginScreen" component={LoginScreen} />
+            {/*<Stack.Screen name="MemberRegisterScreen" component={MemberRegisterScreen} />*/}
+            {/*<Stack.Screen name="Dashboard" component={Dashboard} />*/}
+          {/*<OrderListScreen/>*/}
+
+          </Stack.Navigator>
+        </NavigationContainer>
+
+      </Provider>
+        <OrderDetailScreen/>
+      {/*<LoginScreen/>*/}
+{/*<NativeRouter>*/}
+{/*      /!*<Router>*!/*/}
+{/*        <Routes>*/}
+{/*          /!*<OrderListScreen/>*!/*/}
+{/*      /!*    /!*<Switch>*!/*!/*/}
+{/*          <Route path="/orderListScreen" element={<OrderListScreen/>}/>*/}
+{/*      /!*    /!*<Route path="/login" element={<LoginScreen/>}/>*!/*!/*/}
+{/*      /!*    /!*<Route path="/boardList" element={<BoardList />} />*!/*!/*/}
+{/*      /!*    /!*<Route path="/boardRegisterOrderView" element={<BoardRegisterOrderView />} />*!/*!/*/}
+{/*      /!*    /!*<Route path="/boardDetailView/:id" element={<OrderDetailScreen />} />*!/*!/*/}
+{/*      /!*    /!*<Route path="/boardEditView/:id" element={<BoardEditView />} />*!/*!/*/}
+{/*      /!*    /!*</Switch>*!/*!/*/}
+{/*        </ Routes>*/}
+{/*        /!* Add more routes as needed *!/*/}
+{/*      /!*</Router>*!/*/}
+{/*</NativeRouter>*/}
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
@@ -113,6 +145,7 @@ function App(): React.JSX.Element {
         </View>
       </ScrollView>
     </SafeAreaView>
+
   );
 }
 

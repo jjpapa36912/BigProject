@@ -13,6 +13,7 @@ import {passwordValidator} from '../helpers/passwordValidator'
 import {nameValidator} from '../helpers/nameValidator'
 import axios from "axios";
 import {BACK_END_HOST} from "./LoginScreen";
+import {error} from "react-native-gifted-chat/lib/logging";
 
 const MemberRegisterScreen = () => {
   const userId = "djk";
@@ -24,15 +25,15 @@ const MemberRegisterScreen = () => {
       name,
       password,
     }).then(response => {
-      console.log(response.status);
-
       if (response.status === 200) {
         console.log(response.data);
       }
+    }).catch(function (error) {
+      console.log(error.response.data);
     })
   }
   memberRegister();
-  return <Text>dddd</Text>
+  return <Text>MemberRegisterScreen</Text>
 }
 export default MemberRegisterScreen;
 
