@@ -4,6 +4,8 @@ import {Text} from "react-native";
 import {useEffect} from "@types/react";
 import {useState} from "react";
 import {useRoute} from "@react-navigation/native";
+// import {AsyncStorage} from "@react-native-async-storage/async-storage";
+
 
 
 export const MEMBER_ENTITY_ID_SESSION = 'memberId'
@@ -40,6 +42,8 @@ const LoginScreen = () => {
     console.log(response.status)
     if (response.status == 200) {
       console.log("Login Successful");
+      // AsyncStorage.setItem(MEMBER_ENTITY_ID_SESSION, response.data.id);
+      // AsyncStorage.setItem(MEMBER_ENTITY_USER_ID_SESSION, response.data.userId);
       // sessionStorage.setItem(MEMBER_ENTITY_ID_SESSION, response.data.id);
       // sessionStorage.setItem(MEMBER_ENTITY_USER_ID_SESSION, response.data.userId);
       setLoggedIn(true);

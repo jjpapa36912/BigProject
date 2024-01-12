@@ -34,6 +34,7 @@ import OrderListScreen from "./src/login/screens/OrderListScreen";
 import {theme} from "./src/login/core/theme";
 import OrderDetailScreen from "./src/login/screens/OrderDetailScreen";
 import OrderEditScreen from "./src/login/screens/OrderEditScreen";
+import OrderRegisterScreen from "./src/login/screens/OrderRegisterScreen";
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -82,7 +83,7 @@ function App(): React.JSX.Element {
 
 
         <Stack.Navigator
-              initialRouteName="OrderList"
+              initialRouteName="OrderRegister"
               screenOptions={{
                 headerShown: false,
               }}
@@ -90,6 +91,7 @@ function App(): React.JSX.Element {
             <Stack.Screen name="OrderList" component={OrderListScreen} />
             <Stack.Screen name="OrderDetail" component={OrderDetailScreen} />
           <Stack.Screen name="OrderEdit" component={OrderEditScreen} />
+          <Stack.Screen name="OrderRegister" component={OrderRegisterScreen} />
 
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             {/*<Stack.Screen name="MemberRegisterScreen" component={MemberRegisterScreen} />*/}
@@ -109,7 +111,7 @@ function App(): React.JSX.Element {
 {/*          <Route path="/orderListScreen" element={<OrderListScreen/>}/>*/}
 {/*      /!*    /!*<Route path="/login" element={<LoginScreen/>}/>*!/*!/*/}
 {/*      /!*    /!*<Route path="/boardList" element={<BoardList />} />*!/*!/*/}
-{/*      /!*    /!*<Route path="/boardRegisterOrderView" element={<BoardRegisterOrderView />} />*!/*!/*/}
+{/*      /!*    /!*<Route path="/boardRegisterOrderView" element={<OrderRegisterScreen />} />*!/*!/*/}
 {/*      /!*    /!*<Route path="/boardDetailView/:id" element={<OrderDetailScreen />} />*!/*!/*/}
 {/*      /!*    /!*<Route path="/boardEditView/:id" element={<OrderEditScreen />} />*!/*!/*/}
 {/*      /!*    /!*</Switch>*!/*!/*/}
