@@ -83,7 +83,7 @@ function App(): React.JSX.Element {
 
 
         <Stack.Navigator
-              initialRouteName="OrderRegister"
+              initialRouteName="OrderList"
               screenOptions={{
                 headerShown: false,
               }}
