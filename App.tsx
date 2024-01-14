@@ -29,12 +29,13 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import LoginScreen from "./src/login/screens/LoginScreen";
-import MemberRegisterScreen from "./src/login/screens/MemberRegisterScreen";
-import OrderListScreen from "./src/login/screens/OrderListScreen";
+import UserRegisterScreen from "./src/user/screen/UserRegisterScreen";
+import OrderListScreen from "./src/order/screen/OrderListScreen";
 import {theme} from "./src/login/core/theme";
-import OrderDetailScreen from "./src/login/screens/OrderDetailScreen";
-import OrderEditScreen from "./src/login/screens/OrderEditScreen";
-import OrderRegisterScreen from "./src/login/screens/OrderRegisterScreen";
+import OrderDetailScreen from "./src/order/screen/OrderDetailScreen";
+import OrderEditScreen from "./src/order/screen/OrderEditScreen";
+import OrderRegisterScreen from "./src/order/screen/OrderRegisterScreen";
+import MyPageScreen from "./src/user/screen/MyPageScreen";
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -83,7 +84,7 @@ function App(): React.JSX.Element {
 
 
         <Stack.Navigator
-              initialRouteName="OrderList"
+              initialRouteName="MyPage"
               screenOptions={{
                 headerShown: false,
               }}
@@ -92,9 +93,10 @@ function App(): React.JSX.Element {
             <Stack.Screen name="OrderDetail" component={OrderDetailScreen} />
           <Stack.Screen name="OrderEdit" component={OrderEditScreen} />
           <Stack.Screen name="OrderRegister" component={OrderRegisterScreen} />
+          <Stack.Screen name="MyPage" component={MyPageScreen} />
 
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
-            {/*<Stack.Screen name="MemberRegisterScreen" component={MemberRegisterScreen} />*/}
+            {/*<Stack.Screen name="UserRegisterScreen" component={UserRegisterScreen} />*/}
             {/*<Stack.Screen name="Dashboard" component={Dashboard} />*/}
           {/*<OrderListScreen/>*/}
 
